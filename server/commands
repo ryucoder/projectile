@@ -1,0 +1,13 @@
+
+sudo systemctl daemon-reload
+
+sudo systemctl status celery.service
+
+sudo systemctl start celery
+
+sudo systemctl restart celery
+
+sudo systemctl stop celery
+
+git branch -M master
+git push -u origin master
