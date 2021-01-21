@@ -1,0 +1,19 @@
+
+[Unit]
+Description=Packfect Flower Service
+After=network.target celery.service 
+Requires=celery.service
+
+[Service]
+User=celery
+Group=celery
+EnvironmentFile=/etc/conf.d/celery
+WorkingDirectory=/home/ryucoder/Desktop/Packfect/packfect_backend/
+
+ExecStart=/home/ryucoder/ENV/packfect/bin/flower -A packfect_backend --port=5555
+
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+
+[Unit]
+Description=gunicorn daemon
+Requires=packfect.socket
+After=network.target
+
+[Service]
+User=ryucoder
+Group=www-data
+WorkingDirectory=/home/ryucoder/Desktop/Packfect/packfect_backend
+ExecStart=/home/ryucoder/ENV/packfect/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/packfect.sock \
+          packfect_backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

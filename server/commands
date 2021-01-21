@@ -1,11 +1,11 @@
 
 sudo systemctl daemon-reload
+sudo systemctl restart celery
 
 sudo systemctl status celery.service
 
 sudo systemctl start celery
 
-sudo systemctl restart celery
 
 sudo systemctl stop celery
 

@@ -1,0 +1,19 @@
+
+[Unit]
+Description=Celery Beat Service
+After=network.target packfect-celery.service 
+Requires=packfect-celery.service
+
+[Service]
+Type=simple
+User=ryucoder
+Group=ryucoder
+EnvironmentFile=/etc/conf.d/celery
+WorkingDirectory=/home/ryucoder/Desktop/Packfect/packfect_backend/packfect_backend
+ExecStart=/bin/sh -c '${CELERY_BIN} -A ${CELERY_APP} beat  \
+    --pidfile=${CELERYBEAT_PID_FILE} \
+    --logfile=${CELERYBEAT_LOG_FILE} --loglevel=${CELERYD_LOG_LEVEL}'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
